@@ -39,13 +39,15 @@ cp logstash.yml /etc/logstash/conf.d
 # RUNS EVERYTHING
 #
 
-# starts elastic search
-su - elasticsearch -c /home/elasticsearch/es/elasticsearch-6.1.2/bin/elasticsearch &
-
 # starts logstash
 logstash -f /etc/logstash/conf.d/logstash.conf  \
          --path.settings /etc/logstash/conf.d  &
 
 # starts kibana
 service kibana start
+
+# starts elastic search
+su - elasticsearch -c /home/elasticsearch/es/elasticsearch-6.1.2/bin/elasticsearch
+
+
 

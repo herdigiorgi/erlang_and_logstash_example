@@ -1,0 +1,10 @@
+FROM openjdk
+
+ADD scripts /opt/
+WORKDIR /opt/
+    
+EXPOSE 9200
+EXPOSE 5601
+EXPOSE 9125
+
+CMD ["bash", "/opt/run.sh"]

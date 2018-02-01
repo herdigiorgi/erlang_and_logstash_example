@@ -1,21 +1,17 @@
-.PHONY: run docker install shell default
+.PHONY: ops dev test default
 
 default:
 	@echo "EKL: Elastic Search & Kibana & Logstash"
-	@echo "make [<docker>|<install>|<run>|<shell>]"
-	@echo "make docker: runs EKL in a local dev environment"
-	@echo "make install: installs EKL in the current machine"
-	@echo "make run: runs EKL locally"
+	@echo "make [<ops>|<dev>]"
+	@echo "make ops: runs EKL in a local dev environment"
+	@echo "make dev: opens erlang shell"
+	@echo "make test: test install script"
 
-docker:
+ops:
 	cd ops && docker-compose up
 
-install:
-	cd ops/scripts/ && sh install.sh
-
-run:
-	cd ops/scripts/ && sh run.sh
-
-shell:
+dev:
 	rebar3 shell
 
+test:
+	cd ops && sh test-install-script.sh
